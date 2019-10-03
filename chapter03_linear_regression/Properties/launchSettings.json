@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "chapter03": {
+      "commandName": "Project",
+      "commandLineArgs": "train ..\\..\\..\\Data\\sampledata.csv"
+    }
+  }
+}
