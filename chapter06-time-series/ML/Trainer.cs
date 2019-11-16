@@ -37,6 +37,8 @@ namespace chapter06.ML
             ITransformer trainedModel = trainingPipeLine.Fit(trainingDataView);
 
             MlContext.Model.Save(trainedModel, trainingDataView.Schema, ModelPath);
+
+            Console.WriteLine("Model trained");
         }
     }
 }
