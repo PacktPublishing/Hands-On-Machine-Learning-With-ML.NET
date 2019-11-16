@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "chapter06": {
+      "commandName": "Project",
+      "commandLineArgs": "predict ..\\..\\..\\Data\\testdata.csv"
+    }
+  }
+}
