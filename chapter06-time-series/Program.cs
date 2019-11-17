@@ -13,8 +13,7 @@ namespace chapter06
                 Console.WriteLine($"Invalid arguments passed in, exiting.{Environment.NewLine}{Environment.NewLine}Usage:{Environment.NewLine}" +
                                   $"predict <path to input file>{Environment.NewLine}" +
                                   $"or {Environment.NewLine}" +
-                                  $"train <path to training data file>{Environment.NewLine}" +
-                                  $"or {Environment.NewLine}" + $"extract <path to training folder> <path to test folder>{Environment.NewLine}");
+                                  $"train <path to training data file>{Environment.NewLine}");
 
                 return;
             }
