@@ -19,6 +19,10 @@ namespace chapter08.Objects
             ModelFileName = "chapter8.mdl";
 
             PredictionFileName = @"..\..\..\Data\predict.csv";
+
+            TrainingFileName = @"..\..\..\Data\sampledata.csv";
+
+            TestingFileName = @"..\..\..\Data\testdata.csv";
         }
     }
 }

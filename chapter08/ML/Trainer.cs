@@ -30,11 +30,13 @@ namespace chapter08.ML
 
             var dataView = MlContext.Data.LoadFromTextFile<StockPrices>(arguments.TrainingFileName);
 
-            var inputColumnName = nameof(StockPrices.StockPrice);
-            var outputColumnName = nameof(StockPrediction.StockForecast);
-
-            var model = MlContext.Forecasting.ForecastBySsa(outputColumnName,
-                inputColumnName, 5, 11, 24, 5,
+            var model = MlContext.Forecasting.ForecastBySsa(
+                outputColumnName: nameof(StockPrediction.StockForecast),
+                inputColumnName: nameof(StockPrices.StockPrice), 
+                windowSize: 7, 
+                seriesLength: 30, 
+                trainSize: 24, 
+                horizon: 5,
                 confidenceLevel: 0.95f,
                 confidenceLowerBoundColumn: nameof(StockPrediction.LowerBound),
                 confidenceUpperBoundColumn: nameof(StockPrediction.UpperBound));

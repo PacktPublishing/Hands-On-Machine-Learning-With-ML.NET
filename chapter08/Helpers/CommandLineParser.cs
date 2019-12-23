@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace chapter08.Helpers
 {
-    public class CommandLineParser
+    public static class CommandLineParser
     {
         public static T ParseArguments<T>(string[] args)
         {
@@ -14,7 +14,14 @@ namespace chapter08.Helpers
 
             if (args.Length == 0)
             {
-                return default;
+                Console.WriteLine("No arguments passed in - using defaults");
+
+                return Activator.CreateInstance<T>();
+            }
+
+            if (args.Length % 2 != 0)
+            {
+                throw new ArgumentException($"Arguments must be in pairs, there were {args.Length} passed in");
             }
 
             var argumentObject = Activator.CreateInstance<T>();
