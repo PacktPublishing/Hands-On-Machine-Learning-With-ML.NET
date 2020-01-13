@@ -1,0 +1,78 @@
+﻿@page "/"
+
+@using System.Text.Json
+
+@using chapter09.lib.Data
+
+@inject HttpClient client
+
+<div class="container">
+    <div class="row h-100">
+        <div class="col-sm-12 my-auto">
+            <div id="formContent">
+                <h1>Chapter 9 - ML.NET with Blazor and ASP.NET Core</h1>
+
+                <p>Click on <strong>Choose File</strong> below to upload and get the file's classification</p>
+
+                <InputFile OnChange="HandleSelection" />
+
+                @if (_classificationResponseItem != null) 
+                {
+                    @if (!string.IsNullOrEmpty(_classificationResponseItem.ErrorMessage))
+                    {
+                        <p>@_classificationResponseItem.ErrorMessage</p>
+                    }
+                    else
+                    {
+                        <h3 style="margin-top: 20px">File Prediction Results:</h3>
+
+                        <table class="table" style="margin: 0 auto; color: white">
+                            <tr>
+                                <td class="tableLabel">SHA1 Hash</td>
+                                <td>@_classificationResponseItem.SHA1Sum</td>
+                            </tr>
+                            <tr>
+                                <td class="tableLabel">Is Malicious?</td>
+                                <td>@_classificationResponseItem.IsMalicious</td>
+                            </tr>
+                            <tr>
+                                <td class="tableLabel">Confidence</td>
+                                <td>@_classificationResponseItem.Confidence.ToString("P1")</td>
+                            </tr>
+                        </table>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    FileClassificationResponseItem _classificationResponseItem;
+
+    async Task HandleSelection(IEnumerable<IFileListEntry> files)
+    {
+        var file = files.FirstOrDefault();
+
+        if (file != null)
+        {
+            var ms = new MemoryStream();
+            await file.Data.CopyToAsync(ms);
+
+            var content = new MultipartFormDataContent {
+                {
+                    new ByteArrayContent(ms.GetBuffer()), "file", file.Name
+                }
+            };
+
+            var response = await client.PostAsync("http://localhost:5000/upload/", content);
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            _classificationResponseItem = JsonSerializer.Deserialize<FileClassificationResponseItem>(jsonResponse, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+        }
+    }
+}

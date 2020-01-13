@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+    background-color: #3e3e3e;
+    color: white;
+}
+
+.container {
+    height: 100%;
+}
+
+h1 {
+    color: gold;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #2e2e2e;
+    padding: 30px;
+    width: 90%;
+    position: relative;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    height: 450px;
+}
+
+.tableLabel {
+    font-weight: bold;
+}
