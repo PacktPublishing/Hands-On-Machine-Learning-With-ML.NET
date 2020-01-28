@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 using chapter10.lib.ML;
 
@@ -13,8 +12,6 @@ namespace chapter10.trainer
     {
         public static void Main(string[] args)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
             Console.Clear();
 
             var arguments = CommandLineParser.ParseArguments<ProgramArguments>(args);
