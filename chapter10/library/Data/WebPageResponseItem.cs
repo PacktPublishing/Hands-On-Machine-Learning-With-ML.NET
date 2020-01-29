@@ -2,9 +2,6 @@ namespace chapter10.lib.Data
 {
     public class WebPageResponseItem
     {
-        private const float TRUE = 1.0f;
-        private const float FALSE = 0.0f;
-
         public double Confidence { get; set; }
 
         public bool IsMalicious { get; set; }
