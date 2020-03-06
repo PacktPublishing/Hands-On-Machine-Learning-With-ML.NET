@@ -19,4 +19,10 @@
     <ProjectReference Include="..\chapter09.lib\chapter09.lib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="fileclassification.mdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

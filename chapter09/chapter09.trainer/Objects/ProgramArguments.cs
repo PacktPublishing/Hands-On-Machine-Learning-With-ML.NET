@@ -1,4 +1,5 @@
 ﻿using chapter09.trainer.Enums;
+using Constants = chapter09.lib.Common.Constants;
 
 namespace chapter09.trainer.Objects
 {
@@ -24,9 +25,9 @@ namespace chapter09.trainer.Objects
 
             PredictionFileName = @"..\..\..\..\Data\predict.csv";
 
-            TrainingFileName = @"..\..\..\..\Data\sampledata.csv";
+            TrainingFileName = $@"..\..\..\..\Data\{Constants.SAMPLE_DATA}";
 
-            TestingFileName = @"..\..\..\..\Data\testdata.csv";
+            TestingFileName = $@"..\..\..\..\Data\{Constants.TEST_DATA}";
         }
     }
 }
