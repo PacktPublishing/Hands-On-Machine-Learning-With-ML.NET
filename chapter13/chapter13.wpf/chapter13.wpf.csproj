@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="assets\images\**" />
+    <Compile Remove="assets\inception\**" />
+    <EmbeddedResource Remove="assets\images\**" />
+    <EmbeddedResource Remove="assets\inception\**" />
+    <None Remove="assets\images\**" />
+    <None Remove="assets\inception\**" />
+    <Page Remove="assets\images\**" />
+    <Page Remove="assets\inception\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML" Version="1.3.1" />
+    <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.3.1" />
+    <PackageReference Include="Microsoft.ML.OnnxTransformer" Version="1.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="assets\model\TinyYolo2_model.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="chapter12.mdl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
