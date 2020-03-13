@@ -14,19 +14,6 @@ namespace chapter13.wpf.ViewModels
     {
         private readonly ImageClassificationPredictor _prediction = new ImageClassificationPredictor();
 
-        private string _imageClassification;
-
-        public string ImageClassification
-        {
-            get => _imageClassification;
-
-            set
-            {
-                _imageClassification = value;
-                OnPropertyChanged();
-            }
-        }
-
         private ImageSource _imageSource;
 
         public ImageSource SelectedImageSource
